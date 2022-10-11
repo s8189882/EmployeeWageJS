@@ -41,6 +41,12 @@ function parttimeWage (empWage) {
     return empWage.includes("80");
 }
 
+function totalDaysWorked (numOfDays, empWage) {
+    if (empWage > 0)
+        return numOfDays+1;
+    return numOfDays;
+}
+
 let dailyCounter = 0;
 let totalEmpHours = 0;
 let totalEmpWage = 0;
@@ -56,4 +62,4 @@ while (totalEmpHours <= MAX_HRS_IN_A_MONTH && totalWorkingDays < MAX_DAYS_IN_A_M
 }
 
 let mapDayWithWageArr = empDailyWageArr.map(mapDayWithWages);
-console.log("Checking if any Daily Wage is part time wage : " + mapDayWithWageArr.some(parttimeWage));
+console.log("Number of days worked : " + empDailyWageArr.reduce(totalDaysWorked, 0));
