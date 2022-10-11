@@ -37,6 +37,10 @@ function fulltimeWage (empWage) {
     return empWage.includes("160");
 }
 
+function parttimeWage (empWage) {
+    return empWage.includes("80");
+}
+
 let dailyCounter = 0;
 let totalEmpHours = 0;
 let totalEmpWage = 0;
@@ -52,5 +56,4 @@ while (totalEmpHours <= MAX_HRS_IN_A_MONTH && totalWorkingDays < MAX_DAYS_IN_A_M
 }
 
 let mapDayWithWageArr = empDailyWageArr.map(mapDayWithWages);
-let fulltimeWageArr = mapDayWithWageArr.filter(fulltimeWage);
-console.log("Checking if all fulltime Daily Wage are accurate : " + fulltimeWageArr.every(fulltimeWage));
+console.log("Checking if any Daily Wage is part time wage : " + mapDayWithWageArr.some(parttimeWage));
