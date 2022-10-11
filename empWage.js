@@ -36,6 +36,12 @@ function totalWages (totalEmpWage, empWage) {
     return totalEmpWage + empWage;
 }
 
+function mapDayWithWages (empWage) {
+    dailyCounter++;
+    return dailyCounter + " = " + empWage;
+}
+
+let dailyCounter = 0;
 let totalEmpHours = 0;
 let totalEmpWage = 0;
 let totalWorkingDays = 0;
@@ -49,8 +55,6 @@ while (totalEmpHours <= MAX_HRS_IN_A_MONTH && totalWorkingDays < MAX_DAYS_IN_A_M
     totalEmpHours += empHours;
 }
 
-totalEmpWage = 0;
-empDailyWageArr.forEach(sum);
-console.log("\nTotal days : " + totalWorkingDays + " Total Hours : " + totalEmpHours + " Employee Wage : " + empWage);
-
-console.log("\nEmployee Wage with reduce : " + empDailyWageArr.reduce(totalEmpWage, 0));
+let mapDayWithWageArr = empDailyWageArr.map(mapDayWithWages);
+console.log("Daily Wage Map");
+console.log(mapDayWithWageArr)
