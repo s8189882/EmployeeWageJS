@@ -28,17 +28,13 @@ function calcDailyWage(empHours) {
     return empHours * WAGE_PER_HOUR;
 }
 
-function sum(empWage) {
-    totalEmpWage += empWage;
-}
-
-function totalWages (totalEmpWage, empWage) {
-    return totalEmpWage + empWage;
-}
-
 function mapDayWithWages (empWage) {
     dailyCounter++;
     return dailyCounter + " = " + empWage;
+}
+
+function fulltimeWage (empWage) {
+    return empWage.includes("160");
 }
 
 let dailyCounter = 0;
@@ -56,5 +52,6 @@ while (totalEmpHours <= MAX_HRS_IN_A_MONTH && totalWorkingDays < MAX_DAYS_IN_A_M
 }
 
 let mapDayWithWageArr = empDailyWageArr.map(mapDayWithWages);
-console.log("Daily Wage Map");
-console.log(mapDayWithWageArr)
+let fullDayWageArr = mapDayWithWageArr.filter(fulltimeWage);
+console.log("Daily Wage when fulltime was earned");
+console.log(fullDayWageArr)
