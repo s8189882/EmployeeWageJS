@@ -24,7 +24,20 @@ function getWorkingHours (empCheck) {
     }
 }
 
+function calcDailyWage(empHours) {
+    return empHours * WAGE_PER_HOUR;
+}
+
+function sum(empWage) {
+    totalEmpWage += empWage;
+}
+
+function totalWages (totalEmpWage, empWage) {
+    return totalEmpWage + empWage;
+}
+
 let totalEmpHours = 0;
+let totalEmpWage = 0;
 let totalWorkingDays = 0;
 let empDailyWageArr = new Array();
 
@@ -36,10 +49,8 @@ while (totalEmpHours <= MAX_HRS_IN_A_MONTH && totalWorkingDays < MAX_DAYS_IN_A_M
     totalEmpHours += empHours;
 }
 
-function calcDailyWage(empHours) {
-    return empHours * WAGE_PER_HOUR;
-}
-
-let empWage = calcDailyWage(totalEmpHours);
+totalEmpWage = 0;
+empDailyWageArr.forEach(sum);
 console.log("\nTotal days : " + totalWorkingDays + " Total Hours : " + totalEmpHours + " Employee Wage : " + empWage);
-console.log(empDailyWageArr)
+
+console.log("\nEmployee Wage with reduce : " + empDailyWageArr.reduce(totalEmpWage, 0));
