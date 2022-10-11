@@ -52,4 +52,5 @@ while (totalEmpHours <= MAX_HRS_IN_A_MONTH && totalWorkingDays < MAX_DAYS_IN_A_M
 }
 
 let mapDayWithWageArr = empDailyWageArr.map(mapDayWithWages);
-console.log("Daily Wage when fulltime was earned for the first time : Day " + mapDayWithWageArr.find(fulltimeWage));
+let fulltimeWageArr = mapDayWithWageArr.filter(fulltimeWage);
+console.log("Checking if all fulltime Daily Wage are accurate : " + fulltimeWageArr.every(fulltimeWage));
