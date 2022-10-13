@@ -16,8 +16,11 @@ class EmployeePayrollData {
         return this.name;
     }
 
-    set name (name) {
-        this.name = name;
+    set name(name) {
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+        if (nameRegex.test(name))
+            this.name = name;
+        else throw 'Name is Invalid!';
     }
 
     toString() {
@@ -29,7 +32,12 @@ class EmployeePayrollData {
 
 let employeePayrollData = new EmployeePayrollData(111, "Mark", 50000000);
 console.log(employeePayrollData.toString());
-employeePayrollData.name = "John";
-console.log(employeePayrollData.toString());
+try {
+    employeePayrollData.name = "john";
+    console.log(employeePayrollData.toString());
+} catch (e) {
+    console.error(e);
+}
+
 let newEmployeePayrollData = new EmployeePayrollData(222, "Teresa", 30000000, 'F', new Date());
 console.log(newEmployeePayrollData.toString());
