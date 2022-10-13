@@ -78,3 +78,16 @@ while (totalEmpHours <= MAX_HRS_IN_A_MONTH && totalWorkingDays < MAX_DAYS_IN_A_M
 
 console.log("Employee Wage day wise : ");
 console.log(empDailyHoursWageArr);
+
+let totalWage = empDailyHoursWageArr.filter(dailyHoursWage => dailyHoursWage.dayHours > 0).reduce((totalWage, dailyHoursWage) => totalWage += dailyHoursWage.dayWage, 0);
+let totalHours = empDailyHoursWageArr.filter(dailyHoursWage => dailyHoursWage.dayHours > 0).reduce((totalHours, dailyHoursWage) => totalHours += dailyHoursWage.dayHours, 0);
+console.log("Total Hours : " + totalHours + " Total Wage : " + totalWage);
+
+process.stdout.write("Logging Full Working Days");
+empDailyHoursWageArr.filter(dailyHoursWage => dailyHoursWage.dayHours == 8).forEach(dailyHoursWage => process.stdout.write(dailyHoursWage.toString()));
+
+let partWorkingDayStrArr = empDailyHoursWageArr.filter(dailyHoursWage => dailyHoursWage.dayHours == 4).map(dailyHoursWage => dailyHoursWage.toString());
+console.log("Part Working Days Strings : "  + partWorkingDayStrArr);
+
+let nonWorkingDayNumber = empDailyHoursWageArr.filter(dailyHoursWage => dailyHoursWage.dayHours == 0).map(dailyHoursWage => dailyHoursWage.dayNumber);
+console.log("Non Working Days Numbers : "  + nonWorkingDayNumber);
